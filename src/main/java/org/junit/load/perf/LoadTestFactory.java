@@ -19,7 +19,7 @@ public class LoadTestFactory {
     public static Test createStaggeredLoadTest(LoadPerfStaggered loadPerfStaggered, FrameworkMethod method){
         CustomTest customTest = getCustomTest(method.getMethod().getDeclaringClass(), method.getMethod().getName());
         int variation = loadPerfStaggered.delayVariation();
-        RandomTimer randomTimer = new RandomTimer(loadPerfStaggered.minDelayInMillis(), variation);
+        RandomTimer randomTimer = new RandomTimer(loadPerfStaggered.minDelayBetweenBatchesInMillis(), variation);
 
         String[] batchSizes = loadPerfStaggered.minMaxRandomBatchSizes();
         int minBatchSize = Integer.parseInt(batchSizes[0]);

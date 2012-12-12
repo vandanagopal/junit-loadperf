@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 public @interface LoadPerfStaggered {
     int totalNumberOfUsers();
     String[] minMaxRandomBatchSizes();
-    int minDelayInMillis();
+    int minDelayBetweenBatchesInMillis();
     int delayVariation();
 }

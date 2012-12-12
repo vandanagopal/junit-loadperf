@@ -31,7 +31,6 @@ public class SpringTestMethodFactory extends TestMethodFactory {
         Class<ContextConfiguration> annotationType = ContextConfiguration.class;
         Class<?> declaringClass = AnnotationUtils.findAnnotationDeclaringClass(annotationType, testClass);
         if (declaringClass == null) {
-            System.out.println("To autowire beans annotate your test with ContextConfiguration");
             return;
         }
         TestContextManager testContextManager = new TestContextManager(testClass, null);
