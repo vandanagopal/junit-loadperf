@@ -1,4 +1,4 @@
-package org.junit.load.perf.annotations;
+package com.github.vandanagopal.junitloadperf.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -48,6 +48,11 @@ public class LoadTest extends TestCase {
 
     }
 
+    @After
+    public void after(){
+
+    }
+
 }
 
 This class has spring autowiring set up as specified by ContextConfiguration annotation. The object dummy is autowired.
@@ -58,5 +63,8 @@ The function fooStaggered() runs a total of 10 times. However not all 10 instanc
 of instances that run in parallel are 2 and the maximum is 4 as specified by minMaxRandomBatchSizes.
 The minimum delay between each batch can be adjusted and here is 20 millis. This delay can vary from a minimum of 20 ms
 to a maximum of 20 + delay variation. So the delay between each batch is a random value chosen from this range.
+
+The after method runs twice - once after all the parallel instances of foo is done and once after all the parallel instances of
+fooStaggered is done.
 
 

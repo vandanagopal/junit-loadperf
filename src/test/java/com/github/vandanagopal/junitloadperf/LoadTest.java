@@ -1,10 +1,10 @@
-package org.junit.load.perf;
+package com.github.vandanagopal.junitloadperf;
 
 
+import com.github.vandanagopal.junitloadperf.annotations.LoadPerf;
+import com.github.vandanagopal.junitloadperf.annotations.LoadPerfBefore;
 import junit.framework.TestCase;
 import org.junit.After;
-import org.junit.load.perf.annotations.LoadPerf;
-import org.junit.load.perf.annotations.LoadPerfBefore;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
@@ -42,9 +42,9 @@ public class LoadTest extends TestCase {
 
     @After
     public void after(){
-        assertEquals(5, loadBefore1Count);
-        assertEquals(7, loadBefore2Count);
-        assertEquals(10, loadTestCount);
+        assertEquals(5, loadBefore1Count.size());
+        assertEquals(7, loadBefore2Count.size());
+        assertEquals(10, loadTestCount.size());
     }
 
 }

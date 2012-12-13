@@ -1,6 +1,5 @@
-package org.junit.load.perf;
+package com.github.vandanagopal.junitloadperf;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,10 +1,10 @@
-package org.junit.load.perf;
+package com.github.vandanagopal.junitloadperf;
 
+import com.github.vandanagopal.junitloadperf.outputWriter.TestResultWriter;
 import junit.extensions.TestDecorator;
 import junit.framework.Test;
 import junit.framework.TestResult;
 import org.joda.time.DateTime;
-import org.junit.load.perf.outputWriter.TestResultWriter;
 
 /**
  * A Decorator that runs a test repeatedly.
@@ -31,7 +31,9 @@ public class CustomTest extends TestDecorator {
             return;
         DateTime timeBeforeTest = DateTime.now();
         super.run(result);
-        resultWriter.writeOutput(timeBeforeTest);
+        DateTime timeAfterTest = DateTime.now();
+        if (resultWriter != null)
+            resultWriter.writeOutput(timeAfterTest.getMillis() - timeBeforeTest.getMillis());
     }
 
     @Override

@@ -1,11 +1,12 @@
-package org.junit.load.perf;
+package com.github.vandanagopal.junitloadperf;
 
+import com.github.vandanagopal.junitloadperf.annotations.LoadPerf;
+import com.github.vandanagopal.junitloadperf.annotations.LoadPerfBefore;
+import com.github.vandanagopal.junitloadperf.annotations.LoadPerfStaggered;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import org.junit.load.perf.annotations.LoadPerf;
-import org.junit.load.perf.annotations.LoadPerfBefore;
-import org.junit.load.perf.annotations.LoadPerfStaggered;
+import org.junit.After;
 import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -46,22 +47,32 @@ public class LoadRunner extends BlockJUnit4ClassRunner {
                 TestSuite testSuite = getTestSuite(method);
                 TestResult testResult = TestRunner.run(testSuite);
                 assertTrue(testResult.wasSuccessful());
+                runAfter();
             }
         };
     }
 
     private void runLoadSetUp() {
         List<FrameworkMethod> beforeMethods = getTestClass().getAnnotatedMethods(LoadPerfBefore.class);
-        if(beforeMethods==null)return;
+        if (beforeMethods == null) return;
         sortBeforeMethodsBasedOnPriority(beforeMethods);
-        for(FrameworkMethod method : beforeMethods){
+        for (FrameworkMethod method : beforeMethods) {
             LoadPerfBefore loadPerfBefore = method.getAnnotation(LoadPerfBefore.class);
-            TestSuite testSuite = TestSuiteFactory.createTestSuite(loadPerfBefore.concurrentUsers(), method);
+            TestSuite testSuite = TestSuiteFactory.createBeforeAfterTestSuite(loadPerfBefore.concurrentUsers(), method);
             TestResult testResult = TestRunner.run(testSuite);
             assertTrue(testResult.wasSuccessful());
         }
 
     }
+
+    private void runAfter() {
+        List<FrameworkMethod> afterMethod = getTestClass().getAnnotatedMethods(After.class);
+        if (afterMethod == null || afterMethod.size()==0) return;
+        TestSuite testSuite = TestSuiteFactory.createBeforeAfterTestSuite(1, afterMethod.get(0));
+        TestResult testResult = TestRunner.run(testSuite);
+        assertTrue(testResult.wasSuccessful());
+    }
+
 
     private void sortBeforeMethodsBasedOnPriority(List<FrameworkMethod> beforeMethods) {
         Collections.sort(beforeMethods, new Comparator<FrameworkMethod>() {

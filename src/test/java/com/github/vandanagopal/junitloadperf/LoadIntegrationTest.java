@@ -1,16 +1,11 @@
-package org.junit.load.perf;
+package com.github.vandanagopal.junitloadperf;
 
 
+import com.github.vandanagopal.junitloadperf.annotations.LoadPerf;
 import junit.framework.TestCase;
-import org.junit.After;
-import org.junit.load.perf.annotations.LoadPerf;
-import org.junit.load.perf.annotations.LoadPerfBefore;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RunWith(LoadRunner.class)
 @ContextConfiguration("classpath*:applicationContext.xml")

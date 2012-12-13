@@ -1,5 +1,6 @@
-package org.junit.load.perf.outputWriter;
+package com.github.vandanagopal.junitloadperf.outputWriter;
 
+import com.github.vandanagopal.junitloadperf.outputWriter.TestResultWriter;
 import org.joda.time.DateTime;
 
 import java.io.BufferedWriter;
@@ -18,9 +19,7 @@ public class IndividualTestTimeResultWriter implements TestResultWriter {
     }
 
     @Override
-    public void writeOutput(Object timeBeforeTest) {
-        DateTime afterTest = DateTime.now();
-        long timeTaken = afterTest.getMillis() - ((DateTime) timeBeforeTest).getMillis();
+    public void writeOutput(Object timeTaken) {
         System.out.println("Time taken per test - "+timeTaken + " ms");
         String outputString = DateTime.now().toString("dd-MM-yyyy HH:mm-ss") + ", " + timeTaken + "\n";
         writeToFile(outputString);

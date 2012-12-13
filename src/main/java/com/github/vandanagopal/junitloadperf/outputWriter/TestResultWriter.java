@@ -1,4 +1,4 @@
-package org.junit.load.perf.outputWriter;
+package com.github.vandanagopal.junitloadperf.outputWriter;
 
 public interface TestResultWriter {
 

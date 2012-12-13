@@ -1,4 +1,4 @@
-package org.junit.load.perf;
+package com.github.vandanagopal.junitloadperf;
 
 import com.clarkware.junitperf.TestMethodFactory;
 import junit.framework.Test;
