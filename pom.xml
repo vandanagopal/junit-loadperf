@@ -9,7 +9,7 @@
 
     <groupId>com.github.vandanagopal</groupId>
     <artifactId>junit-load-perf</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <description>Annotated Load Tests using JunitPerf</description>
 
