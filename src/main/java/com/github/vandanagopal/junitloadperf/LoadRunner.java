@@ -1,8 +1,5 @@
 package com.github.vandanagopal.junitloadperf;
 
-import com.github.vandanagopal.junitloadperf.annotations.LoadPerf;
-import com.github.vandanagopal.junitloadperf.annotations.LoadPerfBefore;
-import com.github.vandanagopal.junitloadperf.annotations.LoadPerfStaggered;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
@@ -19,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import com.github.vandanagopal.junitloadperf.annotations.LoadPerfBefore;
+import com.github.vandanagopal.junitloadperf.annotations.LoadPerfStaggered;
+import com.github.vandanagopal.junitloadperf.annotations.LoadPerf;
 
 import static org.junit.Assert.assertTrue;
 
